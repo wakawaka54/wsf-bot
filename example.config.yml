@@ -1,0 +1,15 @@
+
+# The number of seconds to wait between runs
+interval: 60
+
+# A list of different search criteria
+requests:
+  - terminal_from: 'Anacortes'
+    terminal_to: 'Orcas Island'
+    sailing_date: '08/10/2023'
+    vehicle_size: Normal
+    vehicle_height: Tall
+
+# Discord webhook information to receive notifications
+discord:
+  webhook: https://discord.com/api/webhooks/XXXX

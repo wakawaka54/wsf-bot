@@ -1,0 +1,8 @@
+version: '3.6'
+
+services:
+  dps-scheduler:
+    image: ghcr.io/wakawaka54/wsf-bot:latest
+    container_name: wsf-bot
+    volumes:
+      - ./config.yml:/usr/bot/config.yml
