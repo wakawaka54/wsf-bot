@@ -3,6 +3,8 @@ name: Deploy to Github Registry
 on:
   push:
     branches: [ main ]
+    tags: [ "*" ]
+
 
 env:
   IMAGE_NAME: wsf-bot
