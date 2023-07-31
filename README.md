@@ -1,6 +1,6 @@
 # wsf-bot
 
-![Static Badge](https://img.shields.io/badge/version-v0.3-green?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/version-v0.4-green?style=for-the-badge)
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/wakawaka54/wsf-bot/deploy.yml?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/wakawaka54/wsf-bot?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/wakawaka54/wsf-bot?style=for-the-badge)
