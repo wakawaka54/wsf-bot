@@ -7,8 +7,14 @@ requests:
   - terminal_from: 'Anacortes'
     terminal_to: 'Orcas Island'
     sailing_date: '08/10/2023'
+
+    # Time range to filter ferries for, either part of the range can be undefined or excluded all together if desired.
+    sailing_time_from: '08:00 AM'
+    sailing_time_to: '08:00 PM'
+
+    # Vechile size information
     vehicle_size: Normal
-    vehicle_height: Tall
+    vehicle_height: Tall # Normal, Tall, TallXL
 
 # Discord webhook information to receive notifications
 discord:
