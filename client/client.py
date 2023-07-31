@@ -1,4 +1,5 @@
 from playwright.sync_api import sync_playwright
+import datetime
 
 from client.types import VehicleSize, VehicleHeight, FerryScheduleEntry, FerrySchedule, FerryRequest
 
@@ -24,6 +25,7 @@ VEHICLE_HEIGHT_MAP = {
     VehicleHeight.FROM_7_6_TO_13_TALL: '6'
 }
 
+TIME_FORMAT = '%I:%M %p'
 
 def fetch_ferry_schedule(request: FerryRequest):
     if request.terminal_from not in TERMINAL_MAP:
@@ -55,17 +57,29 @@ def fetch_ferry_schedule(request: FerryRequest):
 
         page.close()
 
+    sailing_time_from = \
+        datetime.datetime.strptime(request.sailing_time_from, TIME_FORMAT).time() if request.sailing_time_from else None
+
+    sailing_time_to = \
+        datetime.datetime.strptime(request.sailing_time_to, TIME_FORMAT).time() if request.sailing_time_to else None
+
     entries = []
     for entry in content[1:]:
         split = list(
-            map(str.strip,
-                filter(None, entry.split(sep='\t'))
-                )
+            map(str.strip, filter(None, entry.split(sep='\t')))
         )
+
+        sailing_time = datetime.datetime.strptime(split[0], TIME_FORMAT).time()
+
+        if sailing_time_from and sailing_time < sailing_time_from:
+            continue
+
+        if sailing_time_to and sailing_time > sailing_time_to:
+            continue
 
         entries.append(
             FerryScheduleEntry(
-                sailing_time=split[0],
+                sailing_time=sailing_time,
                 available=any("Space Available" in s for s in split),
                 vessel=split[-1]
             )

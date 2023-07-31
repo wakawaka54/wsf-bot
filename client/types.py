@@ -1,5 +1,8 @@
 import dataclasses
+import datetime
 from enum import Enum
+from typing import Optional
+
 
 class VehicleSize(Enum):
     MOTORCYCLE = 0
@@ -44,12 +47,14 @@ class FerryRequest:
     terminal_from: str
     terminal_to: str
     sailing_date: str
+    sailing_time_from: Optional[str]
+    sailing_time_to: Optional[str]
     vehicle_size: VehicleSize
     vehicle_height: VehicleHeight
 
 @dataclasses.dataclass
 class FerryScheduleEntry:
-    sailing_time: str
+    sailing_time: datetime.time
     available: bool
     vessel: str
 

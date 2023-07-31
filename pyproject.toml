@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "wsf-ferry-scraper"
+version = "0.1.0"
+description = ""
+authors = ["Alex Bello <abello.2015@gmail.com>"]
+readme = "README.md"
+packages = [{include = "wsf_ferry_scraper"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+certifi = "2023.7.22"
+charset-normalizer = "3.2.0"
+contextlib2 = "21.6.0"
+discord-webhook = "1.2.1"
+greenlet = "2.0.2"
+idna = "3.4"
+playwright = "1.35.0"
+pyaml = "23.7.0"
+pyee = "9.0.4"
+pyyaml = "6.0.1"
+requests = "2.31.0"
+schema = "0.7.5"
+typing-extensions = "4.7.1"
+urllib3 = "2.0.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

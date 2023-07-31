@@ -1,14 +1,16 @@
 from time import sleep
 import traceback
+import datetime
 
 from client.client import fetch_ferry_schedule
 from client.types import VehicleSize, VehicleHeight, FerryRequest
 from config.config import read_config
+from config.types import Config, ConfigParser
 from notifications.discord import send_notification
 from notifications.types import FoundAvailableNotification
 
 
-def run(config):
+def run(config: Config):
     requests = config['requests']
 
     print(f'Checking {len(requests)} ferry requests...')
@@ -24,6 +26,8 @@ def run(config):
             terminal_from=request['terminal_from'].lower(),
             terminal_to=request['terminal_to'].lower(),
             sailing_date=request['sailing_date'].lower(),
+            sailing_time_from=request['sailing_time_from'] if 'sailing_time_from' in request else None,
+            sailing_time_to=request['sailing_time_to'] if 'sailing_time_to' in request else None,
             vehicle_size=VehicleSize.from_string(request['vehicle_size'].lower()),
             vehicle_height=VehicleHeight.from_string(request['vehicle_height'].lower()),
         )
